@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-
 const UserContext = React.createContext();
-
 //Provider, Consumer
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "DELETE_USER":
@@ -11,7 +8,6 @@ const reducer = (state, action) => {
         ...state,
         users: state.users.filter((user) => action.payload !== user.id),
       };
-
     case "ADD_USER":
       return {
         ...state,
@@ -21,7 +17,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-
 export class UserProvider extends Component {
   state = {
     users: [
@@ -47,7 +42,6 @@ export class UserProvider extends Component {
         password: "123xxyy",
       },
     ],
-
     dispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
@@ -60,7 +54,5 @@ export class UserProvider extends Component {
     );
   }
 }
-
 const UserConsumer = UserContext.Consumer;
-
 export default UserConsumer;
